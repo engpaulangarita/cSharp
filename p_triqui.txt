@@ -1,0 +1,765 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace p_tictactoe
+{
+    public partial class frmTtt : Form
+    {
+
+        public bool pressed, nuevo = true, equis = true, circulo = false,a1,a2,a3,a4,a5,a6,a7,a8,a9,i1,i2,i3,i4,i5,i6,i7,i8,i9;
+
+        public frmTtt()
+        {
+            InitializeComponent();
+            a1 = false;
+            a2 = false;
+            a3 = false;
+            a4 = false;
+            a5 = false;
+            a6 = false;
+            a7 = false;
+            a8 = false;
+            a9 = false;
+
+            
+        }
+
+
+
+
+
+
+        private void  pictureBox10_Click(object sender, EventArgs e)
+        {
+            pressed = !pressed;
+
+            if (pressed)
+            {
+                pictureBox10.Image = Properties.Resources.x;
+
+            }
+            else
+            {
+
+                pictureBox10.Image = Properties.Resources.circle;
+
+            }
+             
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            a1 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox1.Image = Properties.Resources.x;
+                i1 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.circle;
+                i1 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox1.Enabled = false;
+            
+            //caso a1, a2, a3, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a2 == true && a3 == true && i1 == equis && i2 == equis && i3 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.horizontal;
+                pictureBox2.Image = Properties.Resources.horizontal;
+                pictureBox3.Image = Properties.Resources.horizontal;
+
+            }
+            if (a1 == true && a2 == true && a3 == true && i1 == circulo && i2 == circulo && i3 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.horizontal;
+                pictureBox2.Image = Properties.Resources.horizontal;
+                pictureBox3.Image = Properties.Resources.horizontal;
+            }
+
+            //caso a1, a5, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a5 == true && a9 == true && i1 == equis && i5 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.backslash;
+                pictureBox5.Image = Properties.Resources.backslash;
+                pictureBox9.Image = Properties.Resources.backslash;
+
+            }
+            if (a1 == true && a5 == true && a9 == true && i1 == circulo && i5 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.backslash;
+                pictureBox5.Image = Properties.Resources.backslash;
+                pictureBox9.Image = Properties.Resources.backslash;
+            }
+
+            //caso a1, a4, a7, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a4 == true && a7 == true && i1 == equis && i4 == equis && i7 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.vertical;
+                pictureBox4.Image = Properties.Resources.vertical;
+                pictureBox7.Image = Properties.Resources.vertical;
+
+            }
+            if (a1 == true && a4 == true && a7 == true && i1 == circulo && i4 == circulo && i7 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.vertical;
+                pictureBox4.Image = Properties.Resources.vertical;
+                pictureBox7.Image = Properties.Resources.vertical;
+            }
+
+
+
+
+
+        }
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+            a2 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox2.Image = Properties.Resources.x;
+                i2 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+                pictureBox2.Image = Properties.Resources.circle;
+                i2 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox2.Enabled = false;
+
+            //caso a1, a2, a3, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a2 == true && a3 == true && i1 == equis && i2 == equis && i3 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.horizontal;
+                pictureBox2.Image = Properties.Resources.horizontal;
+                pictureBox3.Image = Properties.Resources.horizontal;
+
+            }
+            if (a1 == true && a2 == true && a3 == true && i1 == circulo && i2 == circulo && i3 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.horizontal;
+                pictureBox2.Image = Properties.Resources.horizontal;
+                pictureBox3.Image = Properties.Resources.horizontal;
+            }
+
+            //caso a2, a8, a5, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a2 == true && a8 == true && a5 == true && i2 == equis && i8 == equis && i5 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox2.Image = Properties.Resources.vertical;
+                pictureBox8.Image = Properties.Resources.vertical;
+                pictureBox5.Image = Properties.Resources.vertical;
+
+            }
+            if (a2 == true && a8 == true && a5 == true && i2 == circulo && i8 == circulo && i5 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox2.Image = Properties.Resources.vertical;
+                pictureBox8.Image = Properties.Resources.vertical;
+                pictureBox5.Image = Properties.Resources.vertical;
+            }
+
+
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            a3 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox3.Image = Properties.Resources.x;
+                i3 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox3.Image = Properties.Resources.circle;
+                i3 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox3.Enabled = false;
+
+            //caso a1, a2, a3, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a2 == true && a3 == true && i1 == equis && i2 == equis && i3 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.horizontal;
+                pictureBox2.Image = Properties.Resources.horizontal;
+                pictureBox3.Image = Properties.Resources.horizontal;
+
+            }
+            if (a1 == true && a2 == true && a3 == true && i1 == circulo && i2 == circulo && i3 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.horizontal;
+                pictureBox2.Image = Properties.Resources.horizontal;
+                pictureBox3.Image = Properties.Resources.horizontal;
+            }
+            //caso a3, a5, a7, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a3 == true && a5 == true && a7 == true && i3 == equis && i5 == equis && i7 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox3.Image = Properties.Resources.slash;
+                pictureBox5.Image = Properties.Resources.slash;
+                pictureBox7.Image = Properties.Resources.slash;
+
+            }
+            if (a3 == true && a5 == true && a7 == true && i3 == circulo && i5 == circulo && i7 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox3.Image = Properties.Resources.slash;
+                pictureBox5.Image = Properties.Resources.slash;
+                pictureBox7.Image = Properties.Resources.slash;
+            }
+
+            //caso a3, a6, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a3 == true && a6 == true && a9 == true && i3 == equis && i6 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox3.Image = Properties.Resources.vertical;
+                pictureBox6.Image = Properties.Resources.vertical;
+                pictureBox9.Image = Properties.Resources.vertical;
+
+            }
+            if (a3 == true && a6 == true && a9 == true && i3 == circulo && i6 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox3.Image = Properties.Resources.vertical;
+                pictureBox6.Image = Properties.Resources.vertical;
+                pictureBox9.Image = Properties.Resources.vertical;
+            }
+
+
+
+
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            a4 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+
+            }
+            if (pressed)
+            {
+                pictureBox4.Image = Properties.Resources.x;
+                i4 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox4.Image = Properties.Resources.circle;
+                i4 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox4.Enabled = false;
+
+            //caso a1, a4, a7, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a4 == true && a7 == true && i1 == equis && i4 == equis && i7 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.vertical;
+                pictureBox4.Image = Properties.Resources.vertical;
+                pictureBox7.Image = Properties.Resources.vertical;
+
+            }
+            if (a1 == true && a4 == true && a7 == true && i1 == circulo && i4 == circulo && i7 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.vertical;
+                pictureBox4.Image = Properties.Resources.vertical;
+                pictureBox7.Image = Properties.Resources.vertical;
+            }
+
+            //caso a4, a5, a6, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a4 == true && a5 == true && a6 == true && i4 == equis && i5 == equis && i6 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox4.Image = Properties.Resources.horizontal;
+                pictureBox5.Image = Properties.Resources.horizontal;
+                pictureBox6.Image = Properties.Resources.horizontal;
+
+            }
+            if (a4 == true && a5 == true && a6 == true && i4 == circulo && i5 == circulo && i6 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox4.Image = Properties.Resources.horizontal;
+                pictureBox5.Image = Properties.Resources.horizontal;
+                pictureBox6.Image = Properties.Resources.horizontal;
+            }
+
+
+        }
+
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            a5 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox5.Image = Properties.Resources.x;
+                i5 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox5.Image = Properties.Resources.circle;
+                i5 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox5.Enabled = false;
+
+
+            //caso a1, a5, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a5 == true && a9 == true && i1 == equis && i5 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.backslash;
+                pictureBox5.Image = Properties.Resources.backslash;
+                pictureBox9.Image = Properties.Resources.backslash;
+
+            }
+            if (a1 == true && a5 == true && a9 == true && i1 == circulo && i5 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.backslash;
+                pictureBox5.Image = Properties.Resources.backslash;
+                pictureBox9.Image = Properties.Resources.backslash;
+            }
+
+            //caso a3, a5, a7, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a3 == true && a5 == true && a7 == true && i3 == equis && i5 == equis && i7 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox3.Image = Properties.Resources.slash;
+                pictureBox5.Image = Properties.Resources.slash;
+                pictureBox7.Image = Properties.Resources.slash;
+
+            }
+            if (a3 == true && a5 == true && a7 == true && i3 == circulo && i5 == circulo && i7 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox3.Image = Properties.Resources.slash;
+                pictureBox5.Image = Properties.Resources.slash;
+                pictureBox7.Image = Properties.Resources.slash;
+            }
+
+            //caso a4, a5, a6, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a4 == true && a5 == true && a6 == true && i4 == equis && i5 == equis && i6 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox4.Image = Properties.Resources.horizontal;
+                pictureBox5.Image = Properties.Resources.horizontal;
+                pictureBox6.Image = Properties.Resources.horizontal;
+
+            }
+            if (a4 == true && a5 == true && a6 == true && i4 == circulo && i5 == circulo && i6 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox4.Image = Properties.Resources.horizontal;
+                pictureBox5.Image = Properties.Resources.horizontal;
+                pictureBox6.Image = Properties.Resources.horizontal;
+            }
+
+            //caso a2, a8, a5, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a2 == true && a8 == true && a5 == true && i2 == equis && i8 == equis && i5 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox2.Image = Properties.Resources.vertical;
+                pictureBox8.Image = Properties.Resources.vertical;
+                pictureBox5.Image = Properties.Resources.vertical;
+
+            }
+            if (a2 == true && a8 == true && a5 == true && i2 == circulo && i8 == circulo && i5 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox2.Image = Properties.Resources.vertical;
+                pictureBox8.Image = Properties.Resources.vertical;
+                pictureBox5.Image = Properties.Resources.vertical;
+            }
+
+
+        }
+
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            a6 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox6.Image = Properties.Resources.x;
+                i6 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox6.Image = Properties.Resources.circle;
+                i6 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox6.Enabled = false;
+
+            //caso a4, a5, a6, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a4 == true && a5 == true && a6 == true && i4 == equis && i5 == equis && i6 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox4.Image = Properties.Resources.horizontal;
+                pictureBox5.Image = Properties.Resources.horizontal;
+                pictureBox6.Image = Properties.Resources.horizontal;
+
+            }
+            if (a4 == true && a5 == true && a6 == true && i4 == circulo && i5 == circulo && i6 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox4.Image = Properties.Resources.horizontal;
+                pictureBox5.Image = Properties.Resources.horizontal;
+                pictureBox6.Image = Properties.Resources.horizontal;
+            }
+
+            //caso a3, a6, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a3 == true && a6 == true && a9 == true && i3 == equis && i6 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox3.Image = Properties.Resources.vertical;
+                pictureBox6.Image = Properties.Resources.vertical;
+                pictureBox9.Image = Properties.Resources.vertical;
+
+            }
+            if (a3 == true && a6 == true && a9 == true && i3 == circulo && i6 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox3.Image = Properties.Resources.vertical;
+                pictureBox6.Image = Properties.Resources.vertical;
+                pictureBox9.Image = Properties.Resources.vertical;
+            }
+        }
+
+       
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            a7 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox7.Image = Properties.Resources.x;
+                i7 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox7.Image = Properties.Resources.circle;
+                i7 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox7.Enabled = false;
+
+            //caso a1, a4, a7, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a4 == true && a7 == true && i1 == equis && i4 == equis && i7 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.vertical;
+                pictureBox4.Image = Properties.Resources.vertical;
+                pictureBox7.Image = Properties.Resources.vertical;
+
+            }
+            if (a1 == true && a4 == true && a7 == true && i1 == circulo && i4 == circulo && i7 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.vertical;
+                pictureBox4.Image = Properties.Resources.vertical;
+                pictureBox7.Image = Properties.Resources.vertical;
+            }
+
+            //caso a3, a5, a7, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a3 == true && a5 == true && a7 == true && i3 == equis && i5 == equis && i7 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox3.Image = Properties.Resources.slash;
+                pictureBox5.Image = Properties.Resources.slash;
+                pictureBox7.Image = Properties.Resources.slash;
+
+            }
+            if (a3 == true && a5 == true && a7 == true && i3 == circulo && i5 == circulo && i7 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox3.Image = Properties.Resources.slash;
+                pictureBox5.Image = Properties.Resources.slash;
+                pictureBox7.Image = Properties.Resources.slash;
+            }
+
+            //caso a7, a8, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a7 == true && a8 == true && a9 == true && i7 == equis && i8 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox7.Image = Properties.Resources.horizontal;
+                pictureBox8.Image = Properties.Resources.horizontal;
+                pictureBox9.Image = Properties.Resources.horizontal;
+
+            }
+            if (a7 == true && a8 == true && a9 == true && i7 == circulo && i8 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox7.Image = Properties.Resources.horizontal;
+                pictureBox8.Image = Properties.Resources.horizontal;
+                pictureBox9.Image = Properties.Resources.horizontal;
+            }
+
+
+        }
+
+
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            a8 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox8.Image = Properties.Resources.x;
+                i8 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox8.Image = Properties.Resources.circle;
+                i8 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox8.Enabled = false;
+
+            //caso a7, a8, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a7 == true && a8 == true && a9 == true && i7 == equis && i8 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox7.Image = Properties.Resources.horizontal;
+                pictureBox8.Image = Properties.Resources.horizontal;
+                pictureBox9.Image = Properties.Resources.horizontal;
+
+            }
+            if (a7 == true && a8 == true && a9 == true && i7 == circulo && i8 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox7.Image = Properties.Resources.horizontal;
+                pictureBox8.Image = Properties.Resources.horizontal;
+                pictureBox9.Image = Properties.Resources.horizontal;
+            }
+
+            //caso a2, a8, a5, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a2 == true && a8 == true && a5 == true && i2 == equis && i8 == equis && i5 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox2.Image = Properties.Resources.vertical;
+                pictureBox8.Image = Properties.Resources.vertical;
+                pictureBox5.Image = Properties.Resources.vertical;
+
+            }
+            if (a2 == true && a8 == true && a5 == true && i2 == circulo && i8 == circulo && i5 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox2.Image = Properties.Resources.vertical;
+                pictureBox8.Image = Properties.Resources.vertical;
+                pictureBox5.Image = Properties.Resources.vertical;
+            }
+
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            a9 = true;
+            if (nuevo == true)
+            {
+                nuevo = false;
+                pictureBox10.Visible = false;
+            }
+            if (pressed)
+            {
+                pictureBox9.Image = Properties.Resources.x;
+                i9 = equis;
+                pressed = !pressed;
+            }
+            else
+            {
+
+                pictureBox9.Image = Properties.Resources.circle;
+                i9 = circulo;
+                pressed = !pressed;
+            }
+            pictureBox9.Enabled = false;
+
+            //caso a1, a5, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a1 == true && a5 == true && a9 == true && i1 == equis && i5 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox1.Image = Properties.Resources.backslash;
+                pictureBox5.Image = Properties.Resources.backslash;
+                pictureBox9.Image = Properties.Resources.backslash;
+
+            }
+            if (a1 == true && a5 == true && a9 == true && i1 == circulo && i5 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox1.Image = Properties.Resources.backslash;
+                pictureBox5.Image = Properties.Resources.backslash;
+                pictureBox9.Image = Properties.Resources.backslash;
+            }
+
+            //caso a7, a8, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a7 == true && a8 == true && a9 == true && i7 == equis && i8 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox7.Image = Properties.Resources.horizontal;
+                pictureBox8.Image = Properties.Resources.horizontal;
+                pictureBox9.Image = Properties.Resources.horizontal;
+
+            }
+            if (a7 == true && a8 == true && a9 == true && i7 == circulo && i8 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox7.Image = Properties.Resources.horizontal;
+                pictureBox8.Image = Properties.Resources.horizontal;
+                pictureBox9.Image = Properties.Resources.horizontal;
+            }
+
+            //caso a3, a6, a9, fueron presionados con el mismo ícono independiente de la secuencia
+            if (a3 == true && a6 == true && a9 == true && i3 == equis && i6 == equis && i9 == equis)
+            {
+                lblGanador.Text = "gano X";
+                pictureBox3.Image = Properties.Resources.vertical;
+                pictureBox6.Image = Properties.Resources.vertical;
+                pictureBox9.Image = Properties.Resources.vertical;
+
+            }
+            if (a3 == true && a6 == true && a9 == true && i3 == circulo && i6 == circulo && i9 == circulo)
+            {
+                lblGanador.Text = "gano O";
+                pictureBox3.Image = Properties.Resources.vertical;
+                pictureBox6.Image = Properties.Resources.vertical;
+                pictureBox9.Image = Properties.Resources.vertical;
+            }
+        }
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            nuevo = true;
+
+            pictureBox1.Enabled = true;
+            pictureBox2.Enabled = true;
+            pictureBox3.Enabled = true;
+            pictureBox4.Enabled = true;
+            pictureBox5.Enabled = true;
+            pictureBox6.Enabled = true;
+            pictureBox7.Enabled = true;
+            pictureBox8.Enabled = true;
+            pictureBox9.Enabled = true;
+            pictureBox10.Visible = true;
+
+            pictureBox1.Image = Properties.Resources.schwarz;
+            pictureBox2.Image = Properties.Resources.schwarz;
+            pictureBox3.Image = Properties.Resources.schwarz;
+            pictureBox4.Image = Properties.Resources.schwarz;
+            pictureBox5.Image = Properties.Resources.schwarz;
+            pictureBox6.Image = Properties.Resources.schwarz;
+            pictureBox7.Image = Properties.Resources.schwarz;
+            pictureBox8.Image = Properties.Resources.schwarz;
+            pictureBox9.Image = Properties.Resources.schwarz;
+
+            a1 = false;
+            a2 = false;
+            a3 = false;
+            a4 = false;
+            a5 = false;
+            a6 = false;
+            a7 = false;
+            a8 = false;
+            a9 = false;
+
+
+            if (pressed)
+            {
+                pictureBox10.Image = Properties.Resources.x;
+
+            }
+            else
+            {
+
+                pictureBox10.Image = Properties.Resources.circle;
+
+            }
+
+            lblGanador.Text = "¿Quién ganará?";
+        }
+
+
+
+
+
+
+
+    }
+}
